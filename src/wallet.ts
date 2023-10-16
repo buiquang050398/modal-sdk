@@ -1,11 +1,13 @@
 import type { App } from "vue";
-import { SpecialUploader } from "./components";
+import { LoginButton } from "./components";
+import { authStore } from './stores/auth';
+import { authBackground } from './compositions/login';
 
-const SpecialUploaderPlugin = {
+const LoginButtonPlugin = {
   install: (app: App, options: { img: string } = { img: "" }) => {
-    app.component("SpecialUploader", SpecialUploader);
+    app.component("LoginButton", LoginButton);
     app.provide("specialUploadImage", options.img);
   },
 };
 
-export { SpecialUploader, SpecialUploaderPlugin }
+export { LoginButton, LoginButtonPlugin, authStore, authBackground };

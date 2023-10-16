@@ -14,10 +14,11 @@ export default defineConfig({
       fileName: 'wallet-modal'
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', 'pinia'],
       output: {
         globals: {
-          vue: 'Vue'
+          vue: 'Vue',
+          pinia: 'Pinia',
         }
       }
     }

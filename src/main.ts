@@ -1,7 +1,12 @@
 import { createApp } from "vue";
+import { createPinia } from 'pinia'
+import { authStore } from './stores/auth';
 import App from "./App.vue";
-//import { SpecialUploaderPlugin } from "@brendan_bui/wallet-modal";
+//import { LoginButtonPlugin } from '@brendan_bui/wallet-modal'
 
-const app = createApp(App);
-//app.use(SpecialUploaderPlugin)
+const pinia = createPinia();
+const app = createApp(App)
+// app.use(LoginButtonPlugin)
+pinia.use(authStore);
+app.use(pinia);
 app.mount("#app");

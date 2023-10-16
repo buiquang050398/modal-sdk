@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { authBackground } from '@/compositions/login';
+import { useAuthStore } from '@/stores/auth';
 import { ref, inject } from 'vue'
 
 const props = defineProps<{
@@ -9,30 +11,21 @@ const img = inject('specialUploadImage') as string
 
 const imgVal = props.customImg ?? img
 const imgSRC = ref(imgVal)
-function fileUpload(event: Event) {
-  const target = event.target as HTMLInputElement
-  if (target.files) {
-    const file = target.files[0]
-    console.log('file', file)
-    fileProcess(file)
-  }
-}
-
-function fileProcess(file: File) {
-  imgSRC.value = URL.createObjectURL(file)
-  console.log('got the file', file)
-  console.log(imgSRC.value)
-}
+const { handleLogin, handleLogout } = authBackground()
+const authStore = useAuthStore()
 </script>
 
 <template>
   <div class="image-uploader">
-    <h1>File Uploader</h1>
-    <input @change="fileUpload" type="file" id="file-upload" name="fileUpload" accept="image/*" />
     <div class="your-file">
       <img :src="imgSRC" alt="" srcset="" />
     </div>
-    img source:{{ imgSRC }}
+    <div v-if="authStore.auth.isAuth">
+      Account Id: 
+      {{ authStore.auth.accountId }}
+    </div>
+    <button v-if="authStore.auth.isAuth" @click="handleLogout">Logout</button>
+    <button v-else @click="handleLogin">Login</button>
   </div>
 </template>
 <style>
