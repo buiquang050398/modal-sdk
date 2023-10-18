@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from 'pinia'
 import { authStore } from './stores/auth';
+import './assets/main.css';
 import App from "./App.vue";
 //import { LoginButtonPlugin } from '@brendan_bui/wallet-modal'
 

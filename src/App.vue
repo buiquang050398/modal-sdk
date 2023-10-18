@@ -1,15 +1,12 @@
 <script setup lang="ts">
-import LoginButton from './components/LoginButton.vue';
+import MainModal from './components/MainModal.vue'
 </script>
 
 <template>
-  <header>
+  <header></header>
 
-  </header>
-
-  <main>
-    <LoginButton />
-  </main>
+  <main></main>
+  <MainModal></MainModal>
 </template>
 
 <style scoped>

@@ -3,3 +3,9 @@ export type Auth = {
   accessToken?: string
   accountId?: string
 }
+
+export enum Method {
+  GOOGLE = 'GOOGLE',
+  FACEBOOK = 'FACEBOOK',
+  DISCORD = 'DISCORD',
+}
